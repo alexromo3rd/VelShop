@@ -18,3 +18,14 @@ CREATE TABLE users (
   hash       VARCHAR(1000) NOT NULL
 );
 
+INSERT INTO products (
+  category,
+  price,
+  description,
+  name
+) VALUES (
+  'Hats',
+  10.99,
+  'Vel the Wonder Baseball Cap',
+  'Vel Hat'
+) RETURNING *;

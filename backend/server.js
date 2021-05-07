@@ -7,14 +7,14 @@ const {
   getProduct,
   createProduct,
   getProductCategories,
-} = require('./controllers/productsController');
+} = require('./controllers/productCtrl');
 const {
   register,
   updateUser,
   login,
   logout,
   deleteUser,
-} = require('./controllers/authController');
+} = require('./controllers/userCtrl');
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
