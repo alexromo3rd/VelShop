@@ -41,16 +41,16 @@ massive({
 
 // Auth endpoints
 app.post('/auth/register', register);
-app.put('/auth/update/:id', updateUser);
 app.post('/auth/login', login);
 app.delete('/auth/logout', logout);
 app.delete('/auth/delete/:id', deleteUser);
+app.put('/auth/update/:id', updateUser);
 
 // Product endpoints
-app.get('/api/products', getAllProducts);
+app.get('/api/products/categories', getProductCategories);
 app.get('/api/products/:id', getProduct);
+app.get('/api/products', getAllProducts);
 app.post('/api/products', createProduct);
-app.delete('/api/products/categories', getProductCategories);
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);
