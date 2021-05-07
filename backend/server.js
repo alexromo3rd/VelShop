@@ -10,6 +10,7 @@ const {
 } = require('./controllers/productsController');
 const {
   register,
+  updateUser,
   login,
   logout,
   deleteUser,
@@ -40,9 +41,10 @@ massive({
 
 // Auth endpoints
 app.post('/auth/register', register);
+app.put('/auth/update/:id', updateUser);
 app.post('/auth/login', login);
-app.post('/auth/logout', logout);
-app.get('/auth/delete', deleteUser);
+app.delete('/auth/logout', logout);
+app.delete('/auth/delete/:id', deleteUser);
 
 // Product endpoints
 app.get('/api/products', getAllProducts);

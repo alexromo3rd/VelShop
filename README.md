@@ -89,6 +89,7 @@ users
 #### Auth
 
 - register a user => POST '/auth/register'
+- update a user => PUT '/auth/update/:id'
 - login a user => POST '/auth/login'
 - logout a user => DELETE '/auth/logout'
 - delete a user => DELETE '/auth/delete'
