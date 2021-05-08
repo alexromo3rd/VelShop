@@ -18,7 +18,7 @@ module.exports = {
 
     try {
       const { id } = req.params
-      const foundProduct = await db.product.get_product_by_id([id]);
+      const foundProduct = await db.product.get_product_by_id({id});
       if(foundProduct.length) {
         const product = foundProduct[0]
         res.status(200).send(product)
@@ -35,7 +35,7 @@ module.exports = {
     const { category, price, description, name } = req.body;
 
     try {
-      const newProduct = await db.product.create_product([category, price, description, name]);
+      const newProduct = await db.product.create_product({category, price, description, name});
       const product = newProduct[0];
 
       res.status(201).send(product)
@@ -48,7 +48,7 @@ module.exports = {
     const { category } = req.query;
 
     try {
-      const products = await db.product.get_products_by_categories([category]);
+      const products = await db.product.get_products_by_categories({category});
       if(products.length !== 0) {
         res.status(200).send(products)
       } else {

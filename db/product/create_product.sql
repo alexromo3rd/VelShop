@@ -4,8 +4,8 @@ INSERT INTO products (
   description,
   name
 ) VALUES (
-  $1,
-  $2,
-  $3,
-  $4
+  ${category},
+  ${price},
+  ${description},
+  ${name}
 ) RETURNING *;

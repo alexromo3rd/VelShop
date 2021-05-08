@@ -3,7 +3,7 @@ INSERT INTO users (
   email,
   hash
 ) VALUES (
-  $1,
-  $2,
-  $3
+  ${name},
+  ${email},
+  ${hash}
 ) RETURNING *;
