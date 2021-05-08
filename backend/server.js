@@ -43,7 +43,7 @@ massive({
 app.post('/auth/register', register);
 app.post('/auth/login', login);
 app.delete('/auth/logout', logout);
-app.delete('/auth/delete', deleteUser);
+app.delete('/auth/delete/:id', deleteUser);
 app.put('/auth/update/:id', updateUser);
 
 // Product endpoints
