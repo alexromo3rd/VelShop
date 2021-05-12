@@ -69,7 +69,6 @@ module.exports = {
     const foundUser = await db.user.find_user_by_id({ id });
     const { user_id } = foundUser[0];
     const { email = null, password = null } = req.body;
-    console.log(`user_id: ${user_id} email: ${email} password: ${password}`);
 
     // only email provided
     if (!password && email) {
