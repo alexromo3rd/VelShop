@@ -34,10 +34,14 @@ app.use(
 massive({
   connectionString: CONNECTION_STRING,
   ssl: { rejectUnauthorized: false },
-}).then((db) => {
-  app.set('db', db);
-  console.log('Database connected');
-});
+})
+  .then((db) => {
+    app.set('db', db);
+    console.log('Database connected');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Auth endpoints
 app.post('/auth/register', register);
