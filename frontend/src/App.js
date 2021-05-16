@@ -1,12 +1,9 @@
 import React from 'react';
+import routes from './routes';
 import './App.css';
 
 const App = () => {
-  return (
-    <main id='container'>
-      <h1>Vel Shop</h1>
-    </main>
-  );
+  return <main className='App'>{routes}</main>;
 };
 
 export default App;
