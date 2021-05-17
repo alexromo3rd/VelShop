@@ -1,12 +1,6 @@
 import React from 'react';
 import './Landing.css';
 
-const Landing = () => {
-  return (
-    <div>
-      <h1>Landing Page</h1>
-    </div>
-  );
-};
+const Landing = () => <section className='landing'></section>;
 
 export default Landing;

@@ -1,0 +1,49 @@
+.user-actions {
+  margin: 0 60px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+}
+
+.inline-link {
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 50px 0;
+  padding: 20px 0;
+}
+
+.login {
+  font-size: 24px;
+}
+
+.navigation {
+  min-height: 400px;
+  margin-top: 60px;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-media-links {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 36px;
+}
