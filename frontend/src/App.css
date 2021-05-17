@@ -3,15 +3,14 @@
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: (6, 1fr);
+  display: flex;
+  justify-content: center;
 }
 
 .sidebar {
-  grid-column: 1;
+  width: 25%;
 }
 
 .main {
-  grid-column-start: 2;
-  grid-column-end: 6;
+  width: 75%;
 }
