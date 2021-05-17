@@ -1,14 +1,15 @@
 .App {
+  background-color: #fffaf0;
   font-family: 'Rambla', sans-serif;
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
 }
 
 .sidebar {
   width: 25%;
+  border-right: 1px solid black;
 }
 
 .main {

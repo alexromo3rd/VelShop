@@ -1,11 +1,11 @@
 import React from 'react';
 import './Button.css';
 
-const Button = (props) => {
-  const className = `button ${props.styleName}`;
+const Button = ({ styleName, label, handleClick }) => {
+  const className = `button ${styleName}`;
   return (
-    <button type='button' className={className} onClick={props.handleClick}>
-      {props.label}
+    <button type='button' className={className} onClick={handleClick}>
+      {label}
     </button>
   );
 };

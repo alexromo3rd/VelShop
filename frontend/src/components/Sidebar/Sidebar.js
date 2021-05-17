@@ -7,7 +7,7 @@ const SideBar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    setLoggedIn(true);
+    // setLoggedIn(true);
   }, [loggedIn]);
 
   return (
@@ -21,14 +21,19 @@ const SideBar = () => {
             <Link to='/profile' className='inline-link'>
               <i className='far fa-user'></i>
             </Link>
-            <Link to='/logout' className='inline-link'>
+            <Link to='/logout' className='inline-link logout'>
               <i class='fas fa-sign-out-alt'></i>
             </Link>
           </div>
         ) : (
-          <Link to='/login' className='login link'>
-            Login
-          </Link>
+          <div className='user-actions'>
+            <Link to='/signup' className='inline-link'>
+              Sign Up
+            </Link>
+            <Link to='/login' className='inline-link'>
+              Login
+            </Link>
+          </div>
         )}
       </div>
       <nav className='navigation'>

@@ -1,2 +1,13 @@
-.button {
+.submit {
+  margin-top: 20px;
+  font-size: 20px;
+  background-color: #fffaf0;
+  border-radius: 5px;
+}
+.submit:hover {
+  color: #fffaf0;
+  background-color: black;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
