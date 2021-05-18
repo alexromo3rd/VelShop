@@ -1,0 +1,23 @@
+.shop-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-template-rows: auto;
+}
+
+#searchValue {
+  margin-left: 90px;
+  margin-top: 20px;
+  width: 150%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 1;
+}
+
+.shop-container button {
+  margin-left: 110px;
+  margin-top: 20px;
+  width: 50%;
+  grid-column: 4;
+  grid-row: 1;
+}

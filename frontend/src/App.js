@@ -6,9 +6,9 @@ import './App.css';
 const App = () => {
   return (
     <main className='App'>
-      <div className='sidebar'>
-        <SideBar />
-      </div>
+      <section className='sidebar'>
+        <SideBar className='sidebar' />
+      </section>
       <section className='main'>{routes}</section>
     </main>
   );
