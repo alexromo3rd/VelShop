@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import './Login.css';
+import './SignUp.css';
 
-const Login = () => {
+const SignUp = () => {
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const submit = () => {
-    console.log(`Username: ${username} Password: ${password}`);
+    console.log(`Name: ${name} Username: ${username} Password: ${password}`);
   };
 
   return (
     <>
       <form className='form'>
-        <h2>Welcome back! Please log in.</h2>
+        <h2>Welcome! Please create your account.</h2>
+        <FormInput
+          name='name'
+          label='Name'
+          type='email'
+          placeholder='Enter your name...'
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          className='input'
+        />
+
         <FormInput
           name='username'
           label='Username'
@@ -41,4 +52,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
