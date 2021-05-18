@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import './SideBar.css';
+import './Sidebar.css';
 
 const SideBar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
