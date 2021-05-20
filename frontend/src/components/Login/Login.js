@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import './Login.css';
@@ -7,7 +9,11 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submit = () => {
+  useEffect(() => {
+    setUser('Called the function');
+  });
+
+  const login = () => {
     console.log(`Username: ${username} Password: ${password}`);
   };
 
@@ -35,10 +41,18 @@ const Login = () => {
           className='input'
         />
 
-        <Button styleName='submit' label='Submit' handleClick={submit} />
+        <Button styleName='submit' label='Login' handleClick={login} />
       </form>
     </>
   );
 };
 
-export default Login;
+const mapDispatchToProps = null;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.userReducer.user,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
