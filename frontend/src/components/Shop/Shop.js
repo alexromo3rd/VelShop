@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
@@ -7,9 +8,20 @@ import './Shop.css';
 
 const Shop = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [category, setCategory] = useState('');
+  const [productList, setProductList] = useState([]);
 
+  useEffect(() => {
+    getProducts();
+  }, [productList]);
+
+  const getProducts = async () => {
+    productList = await axios.get('/api/products');
+    console.log(productList);
+  };
   const submit = () => {
     console.log(`Search Value: ${searchValue}`);
+    setSearchValue('');
   };
 
   return (
