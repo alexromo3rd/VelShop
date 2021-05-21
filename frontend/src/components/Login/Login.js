@@ -11,7 +11,7 @@ const Login = () => {
 
   useEffect(() => {
     setUser('Called the function');
-  });
+  }, []);
 
   const login = () => {
     console.log(`Username: ${username} Password: ${password}`);

@@ -51,9 +51,9 @@ app.delete('/auth/delete/:id', deleteUser);
 app.put('/auth/update/:id', updateUser);
 
 // Product endpoints
+app.get('/api/products', getAllProducts);
 app.get('/api/products/categories', getProductCategories);
 app.get('/api/products/:id', getProduct);
-app.get('/api/products', getAllProducts);
 app.post('/api/products', createProduct);
 
 app.listen(SERVER_PORT, () => {

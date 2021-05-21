@@ -1,22 +1,32 @@
+import axios from 'axios';
+
 const initialState = {
+  loading: false,
   productList: [],
 };
 
-const SET_PRODUCT_LIST = 'SET_PRODUCT_LIST';
+const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST';
 
-export function setProductList(productListObj) {
+export function getProductList() {
+  const products = axios.get('/api/products');
+
   return {
-    type: SET_PRODUCT_LIST,
-    payload: productListObj,
+    type: GET_PRODUCT_LIST,
+    payload: products,
   };
 }
 
 export default function reducer(state = initialState, action) {
+  console.log('Hitting Reducer', JSON.stringify(action, null, 2));
   const { type, payload } = action;
 
   switch (type) {
-    case SET_PRODUCT_LIST:
-      return { ...state, productList: payload };
+    case GET_PRODUCT_LIST + '_PENDING':
+      return { ...state, loading: true };
+    case GET_PRODUCT_LIST + '_FULFILLED':
+      return { ...state, productList: payload, loading: false };
+    case GET_PRODUCT_LIST + '_REJECTED':
+      return { ...state, loading: false };
     default:
       return state;
   }

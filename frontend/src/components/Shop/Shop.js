@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getProductList } from '../../redux/productListReducer';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import ProductList from '../ProductList/ProductList';
+// import ProductList from '../ProductList/ProductList';
 import './Shop.css';
+import axios from 'axios';
 
-const Shop = () => {
+const Shop = (props) => {
   const [searchValue, setSearchValue] = useState('');
-  const [category, setCategory] = useState('');
-  const [productList, setProductList] = useState([]);
+  // const [category, setCategory] = useState('');
 
   useEffect(() => {
-    getProducts();
-  }, [productList]);
+    props.getProductList();
+  }, []);
 
-  const getProducts = async () => {
-    productList = await axios.get('/api/products');
-    console.log(productList);
-  };
   const submit = () => {
     console.log(`Search Value: ${searchValue}`);
     setSearchValue('');
@@ -45,9 +42,23 @@ const Shop = () => {
         <Link to='/shop/limited'>Limited Drops</Link>
         <Link to='/shop/misc'>Misc</Link>
       </div>
-      <ProductList />
+      <br />
+      <br />
+      <br />
+      <br />
+      {JSON.stringify(props.productList)}
     </>
   );
 };
 
-export default Shop;
+const mapStateToProps = (reduxState) => {
+  return {
+    productList: reduxState.productListReducer.productList,
+  };
+};
+
+const mapDispatchToProps = {
+  getProductList: getProductList,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

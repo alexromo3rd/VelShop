@@ -22,7 +22,7 @@ const SideBar = () => {
               <i className='far fa-user'></i>
             </Link>
             <Link to='/logout' className='inline-link logout'>
-              <i class='fas fa-sign-out-alt'></i>
+              <i className='fas fa-sign-out-alt'></i>
             </Link>
           </div>
         ) : (
@@ -60,7 +60,7 @@ const SideBar = () => {
           rel='noreferrer'
           className='inline-link'
         >
-          <i class='fab fa-instagram'></i>
+          <i className='fab fa-instagram'></i>
         </a>
         <a
           href='https://www.facebook.com/Vel-9-383125315074652/'
@@ -68,7 +68,7 @@ const SideBar = () => {
           rel='noreferrer'
           className='inline-link'
         >
-          <i class='fab fa-facebook'></i>
+          <i className='fab fa-facebook'></i>
         </a>
         <a
           href='https://twitter.com/velthewonder'
@@ -76,7 +76,7 @@ const SideBar = () => {
           rel='noreferrer'
           className='inline-link'
         >
-          <i class='fab fa-twitter-square'></i>
+          <i className='fab fa-twitter-square'></i>
         </a>
       </footer>
     </>
