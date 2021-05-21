@@ -17,14 +17,13 @@ export function getProductList() {
 }
 
 export default function reducer(state = initialState, action) {
-  console.log('Hitting Reducer', JSON.stringify(action, null, 2));
   const { type, payload } = action;
 
   switch (type) {
     case GET_PRODUCT_LIST + '_PENDING':
       return { ...state, loading: true };
     case GET_PRODUCT_LIST + '_FULFILLED':
-      return { ...state, productList: payload, loading: false };
+      return { ...state, productList: payload.data, loading: false };
     case GET_PRODUCT_LIST + '_REJECTED':
       return { ...state, loading: false };
     default:
