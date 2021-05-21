@@ -11,7 +11,7 @@ const SideBar = () => {
   }, [loggedIn]);
 
   return (
-    <>
+    <section className='sticky-sidebar'>
       <Link to='/' className='title link'>
         Vel the Wonder
       </Link>
@@ -79,7 +79,7 @@ const SideBar = () => {
           <i className='fab fa-twitter-square'></i>
         </a>
       </footer>
-    </>
+    </section>
   );
 };
 

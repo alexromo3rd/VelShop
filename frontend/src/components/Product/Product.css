@@ -1,3 +1,14 @@
-img {
+.product {
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 150px;
+}
+
+.product img {
   height: 150px;
+}
+
+.product p {
+  text-align: center;
+  line-height: 36px;
 }

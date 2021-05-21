@@ -24,7 +24,11 @@ const ProductList = (props) => {
     );
   };
 
-  return <>{list.length === 0 ? <Loader /> : <>{list}</>}</>;
+  return (
+    <section className='products'>
+      {list.length === 0 ? <Loader /> : <>{list}</>}
+    </section>
+  );
 };
 
 const mapStateToProps = (reduxState) => {

@@ -17,6 +17,7 @@ const Shop = () => {
         <Link to='/shop/limited'>Limited Drops</Link>
         <Link to='/shop/misc'>Misc</Link>
       </div>
+      <hr />
       <ProductList />
     </>
   );

@@ -2,18 +2,18 @@ import React from 'react';
 import './Product.css';
 
 const Product = (props) => {
-  const { name, price, description, category } = props.product;
+  const { name, price } = props.product;
   return (
-    <>
+    <div className='product'>
       <img
         src='https://james-hare.com/images/imagenotfound.jpg'
-        alt='image not found'
+        alt='not found'
       />
-      <p>Name: {name}</p>
-      <p>Price: ${price}</p>
-      <p>Description: {description}</p>
-      <p>Category: {category}</p>
-    </>
+      <div>
+        <p>{name}</p>
+        <p>${price}</p>
+      </div>
+    </div>
   );
 };
 
