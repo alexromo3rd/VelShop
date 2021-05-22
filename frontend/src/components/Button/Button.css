@@ -11,3 +11,13 @@
   transition-duration: 0.4s;
   cursor: pointer;
 }
+
+.logout {
+  font-size: 24px;
+  background-color: #fffaf0;
+  border: none;
+}
+
+.logout:hover {
+  cursor: pointer;
+}

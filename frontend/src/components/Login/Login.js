@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
+import axios from 'axios';
 import './Login.css';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
+const Login = (props) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    setUser('Called the function');
-  }, []);
+  const login = async () => {
+    try {
+      const user = await axios.post('/api/login', { email, password });
+      props.setUser(user);
 
-  const login = () => {
-    console.log(`Username: ${username} Password: ${password}`);
+      props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -22,12 +26,12 @@ const Login = () => {
       <form className='form'>
         <h2>Welcome back! Please log in.</h2>
         <FormInput
-          name='username'
-          label='Username'
+          name='email'
+          label='Email'
           type='email'
-          placeholder='Enter your email...'
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          placeholder='Enter your  email...'
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
           className='input'
         />
 
@@ -47,11 +51,13 @@ const Login = () => {
   );
 };
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {
+  setUser: setUser,
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (reduxState) => {
   return {
-    user: state.userReducer.user,
+    user: reduxState.userReducer.user,
   };
 };
 

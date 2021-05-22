@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Landing from './components/Landing/Landing';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
 import Shop from './components/Shop/Shop';
 
 export default (
@@ -10,6 +11,7 @@ export default (
     <Route exact path='/' component={Landing} />
     <Route path='/signup' component={SignUp} />
     <Route path='/login' component={Login} />
+    <Route path='/logout' component={Logout} />
     <Route path='/shop' component={Shop} />
   </Switch>
 );

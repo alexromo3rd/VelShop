@@ -16,8 +16,8 @@ const ProductList = (props) => {
     generateProductList();
   }, [props.productList]);
 
-  const generateProductList = async () => {
-    await setList(
+  const generateProductList = () => {
+    setList(
       props.productList.map((product) => {
         return <Product key={product.product_id} product={product} />;
       })

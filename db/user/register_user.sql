@@ -6,4 +6,4 @@ INSERT INTO users (
   ${name},
   ${email},
   ${hash}
-) RETURNING *;
+) RETURNING user_id, email;

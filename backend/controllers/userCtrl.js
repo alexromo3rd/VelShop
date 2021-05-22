@@ -8,7 +8,7 @@ module.exports = {
 
     try {
       if (foundUser[0]) {
-        res.status(409).send('User already exists');
+        res.status(400).send('User already exists');
       } else {
         let salt = bcrypt.genSaltSync(5);
         const hash = bcrypt.hashSync(password, salt);

@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { clearUser } from '../../redux/userReducer';
 import Button from '../Button/Button';
 import './Sidebar.css';
 
-const SideBar = () => {
+const SideBar = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
-    // setLoggedIn(true);
-  }, [loggedIn]);
+    if (props.user.name) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [props.user]);
+
+  const logout = async () => {
+    try {
+      await axios.delete('/api/logout');
+      props.clearUser();
+      history.push('/logout');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -21,9 +39,11 @@ const SideBar = () => {
             <Link to='/profile' className='inline-link'>
               <i className='far fa-user'></i>
             </Link>
-            <Link to='/logout' className='inline-link logout'>
-              <i className='fas fa-sign-out-alt'></i>
-            </Link>
+            <Button
+              styleName='logout'
+              label={<i className='fas fa-sign-out-alt'></i>}
+              handleClick={logout}
+            ></Button>
           </div>
         ) : (
           <div className='user-actions'>
@@ -83,4 +103,14 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+const mapDispatchToProps = {
+  clearUser: clearUser,
+};
+
+const mapStateToProps = (reduxState) => {
+  return {
+    user: reduxState.userReducer.user,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

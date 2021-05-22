@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import './SignUp.css';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submit = () => {
-    console.log(`Name: ${name} Username: ${username} Password: ${password}`);
+  const submit = async () => {
+    console.log(`Name: ${name} Email: ${email} Password: ${password}`);
+    try {
+      const user = await axios.post('/api/register', { email, password });
+      props.setUser(user);
+
+      props.history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -19,7 +30,7 @@ const SignUp = () => {
         <FormInput
           name='name'
           label='Name'
-          type='email'
+          type='text'
           placeholder='Enter your name...'
           onChange={(e) => setName(e.target.value)}
           value={name}
@@ -27,12 +38,12 @@ const SignUp = () => {
         />
 
         <FormInput
-          name='username'
-          label='Username'
+          name='email'
+          label='Email'
           type='email'
           placeholder='Enter your email...'
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
           className='input'
         />
 
@@ -52,4 +63,14 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = {
+  setUser: setUser,
+};
+
+const mapStateToProps = (reduxState) => {
+  return {
+    user: reduxState.userReducer.user,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

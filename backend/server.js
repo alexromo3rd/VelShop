@@ -26,7 +26,7 @@ app.use(
   session({
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 },
   })
 );
@@ -44,11 +44,11 @@ massive({
   });
 
 // Auth endpoints
-app.post('/auth/register', register);
-app.post('/auth/login', login);
-app.delete('/auth/logout', logout);
-app.delete('/auth/delete/:id', deleteUser);
-app.put('/auth/update/:id', updateUser);
+app.post('/api/register', register);
+app.post('/api/login', login);
+app.delete('/api/logout', logout);
+app.delete('/api/delete/:id', deleteUser);
+app.put('/api/update/:id', updateUser);
 
 // Product endpoints
 app.get('/api/products', getAllProducts);
