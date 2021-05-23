@@ -8,7 +8,7 @@ const Logout = () => {
   useEffect(() => {
     setTimeout(() => {
       history.push('/');
-    }, 4000);
+    }, 3000);
   }, []);
 
   return (

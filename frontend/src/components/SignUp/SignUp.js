@@ -12,9 +12,9 @@ const SignUp = (props) => {
   const [password, setPassword] = useState('');
 
   const submit = async () => {
-    console.log(`Name: ${name} Email: ${email} Password: ${password}`);
     try {
-      const user = await axios.post('/api/register', { email, password });
+      const user = await axios.post('/api/register', { name, email, password });
+      console.log(user);
       props.setUser(user);
 
       props.history.push('/');

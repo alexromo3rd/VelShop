@@ -11,7 +11,7 @@ const SideBar = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    if (props.user.name) {
+    if (props.user.email) {
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
