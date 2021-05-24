@@ -31,7 +31,6 @@ const Shop = (props) => {
     if (history.location.pathname === '/shop') {
       props.getProductList();
     } else {
-      console.log(history.location.pathname.split('/')[2]);
       props.getProductListByCategory(history.location.pathname.split('/')[2]);
     }
   };

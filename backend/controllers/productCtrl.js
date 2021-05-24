@@ -31,7 +31,7 @@ module.exports = {
   },
   createProduct: async (req, res) => {
     const db = req.app.get('db');
-    const { category, price, description, name } = req.body;
+    const { category, price, description, name, count_in_stock } = req.body;
 
     try {
       const newProduct = await db.product.create_product({
@@ -39,6 +39,7 @@ module.exports = {
         price,
         description,
         name,
+        count_in_stock,
       });
       const product = newProduct[0];
 
@@ -50,7 +51,6 @@ module.exports = {
   getProductCategories: async (req, res) => {
     const db = req.app.get('db');
     const { category } = req.query;
-    console.log(category);
 
     try {
       const products = await db.product.get_products_by_categories({

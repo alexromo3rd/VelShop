@@ -35,3 +35,7 @@
 .logout:hover {
   cursor: pointer;
 }
+
+.search {
+  margin: 0 auto;
+}

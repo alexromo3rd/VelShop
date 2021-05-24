@@ -1,24 +1,32 @@
 .search-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 80% 10% 10%;
   gap: 10px;
-  grid-template-rows: auto;
+  margin-top: 20px;
   text-align: center;
 }
 
+.search-container label {
+  display: none;
+}
+
+.search-container input {
+  width: 100%;
+  grid-column: 1;
+}
+
 #searchValue {
-  margin-left: 50px;
-  margin-top: 40px;
-  width: 150%;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row: 1;
+  margin: 0 auto;
+  width: 95%;
+  grid-column: 1;
 }
 
 .search-container button {
-  margin-left: 110px;
-  margin-top: 40px;
-  width: 50%;
-  grid-column: 4;
-  grid-row: 1;
+  width: 80%;
+  grid-column: 2;
+}
+
+.search-container i {
+  font-size: 26px;
+  grid-column: 3;
 }

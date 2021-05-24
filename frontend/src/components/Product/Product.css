@@ -4,6 +4,10 @@
   width: 150px;
 }
 
+.product:hover {
+  cursor: pointer;
+}
+
 .product img {
   height: 150px;
 }

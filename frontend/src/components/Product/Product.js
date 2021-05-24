@@ -1,10 +1,18 @@
 import React from 'react';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import './Product.css';
 
-const Product = (props) => {
-  const { name, price } = props.product;
+const Product = ({ product }) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/api/products/${product.product_id}`);
+  };
+
+  const { name, price } = product;
   return (
-    <div className='product'>
+    <div className='product' onClick={handleClick}>
       <img
         src='https://james-hare.com/images/imagenotfound.jpg'
         alt='not found'

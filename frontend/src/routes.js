@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Profile from './components/Profile/Profile';
 import Shop from './components/Shop/Shop';
+import Cart from './components/Cart/Cart';
 
 export default (
   <Switch>
@@ -15,5 +16,6 @@ export default (
     <Route path='/logout' component={Logout} />
     <Route path='/profile/:id' component={Profile} />
     <Route path='/shop' component={Shop} />
+    <Route path='/cart' component={Cart} />
   </Switch>
 );

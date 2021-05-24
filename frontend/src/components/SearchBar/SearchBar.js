@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import './SearchBar.css';
@@ -20,7 +21,10 @@ const SearchBar = () => {
         value={searchValue}
         className='input'
       />
-      <Button styleName='submit' label='Search' handleClick={submit} />
+      <Button styleName='submit search' label='Search' handleClick={submit} />
+      <Link to='/cart' className='inline-link'>
+        <i className='fas fa-shopping-cart'></i>
+      </Link>
     </section>
   );
 };
