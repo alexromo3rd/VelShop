@@ -1,44 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getProductList } from '../../redux/productListReducer';
-import Loader from '../Loader/Loader';
+import React, { useState, useEffect, useRef } from 'react';
 import Product from '../Product/Product';
 import './ProductList.css';
 
-const ProductList = (props) => {
-  const [list, setList] = useState([]);
+const ProductList = ({ list }) => {
+  const [products, setProducts] = useState([]);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    props.getProductList();
-  }, []);
-
-  useEffect(() => {
-    generateProductList();
-  }, []);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      generateProductList();
+    }
+  }, [list]);
 
   const generateProductList = () => {
-    setList(
-      props.productList.map((product) => {
+    setProducts(
+      list.map((product) => {
         return <Product key={product.product_id} product={product} />;
       })
     );
   };
 
-  return (
-    <section className='products'>
-      {list.length === 0 ? <Loader /> : <>{list}</>}
-    </section>
-  );
+  return <section className='products'>{products}</section>;
 };
 
-const mapStateToProps = (reduxState) => {
-  return {
-    productList: reduxState.productListReducer.productList,
-  };
-};
-
-const mapDispatchToProps = {
-  getProductList: getProductList,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+export default ProductList;
