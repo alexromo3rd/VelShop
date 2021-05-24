@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useHistory, Redirect } from 'react-router-dom';
 import './Logout.css';
 
-const Logout = () => {
+const Logout = (props) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -27,4 +28,10 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+const mapStateToProps = (reduxState) => {
+  return {
+    user: reduxState.userReducer.user,
+  };
+};
+
+export default connect(mapStateToProps)(Logout);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
@@ -9,17 +10,22 @@ import './Login.css';
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const login = async () => {
     try {
       const user = await axios.post('/api/login', { email, password });
       props.setUser(user);
 
-      props.history.push('/');
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
   };
+
+  if (props.user.email) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <>

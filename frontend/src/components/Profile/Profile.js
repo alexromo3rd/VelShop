@@ -1,47 +1,25 @@
-import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import './SignUp.css';
+import './Profile.css';
 
-const SignUp = (props) => {
+const Profile = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
 
-  const submit = async () => {
-    try {
-      const user = await axios.post('/api/register', { name, email, password });
-      console.log(user);
-      props.setUser(user);
-
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  if (props.user.email) {
+  if (!props.user.email) {
     return <Redirect to='/' />;
   }
+
+  const submit = () => {};
 
   return (
     <>
       <form className='form'>
-        <h2>Welcome! Please create your account.</h2>
-        <FormInput
-          name='name'
-          label='Name'
-          type='text'
-          placeholder='Enter your name...'
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          className='input'
-        />
+        <h2>{props.user.name}, You may update your account info below.</h2>
 
         <FormInput
           name='email'
@@ -69,9 +47,7 @@ const SignUp = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  setUser: setUser,
-};
+const mapDispatchToProps = null;
 
 const mapStateToProps = (reduxState) => {
   return {
@@ -79,4 +55,4 @@ const mapStateToProps = (reduxState) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

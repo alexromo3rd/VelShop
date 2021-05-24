@@ -4,6 +4,7 @@ import Landing from './components/Landing/Landing';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import Profile from './components/Profile/Profile';
 import Shop from './components/Shop/Shop';
 
 export default (
@@ -12,6 +13,7 @@ export default (
     <Route path='/signup' component={SignUp} />
     <Route path='/login' component={Login} />
     <Route path='/logout' component={Logout} />
+    <Route path='/profile' component={Profile} />
     <Route path='/shop' component={Shop} />
   </Switch>
 );
