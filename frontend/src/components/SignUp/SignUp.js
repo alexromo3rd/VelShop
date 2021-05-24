@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router';
 import axios from 'axios';
+import { useHistory, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';

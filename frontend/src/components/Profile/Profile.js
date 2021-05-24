@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import './Profile.css';
 
 const Profile = (props) => {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +15,19 @@ const Profile = (props) => {
     return <Redirect to='/' />;
   }
 
-  const submit = () => {};
+  const update = async () => {
+    try {
+      const user = await axios.put(`/api/update/${props.match.params.id}`, {
+        email,
+        password,
+      });
+      props.updateUser(user);
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -23,7 +36,7 @@ const Profile = (props) => {
 
         <FormInput
           name='email'
-          label='Email'
+          label={`Email: ${props.user.email}`}
           type='email'
           placeholder='Enter your email...'
           onChange={(e) => setEmail(e.target.value)}
@@ -41,13 +54,15 @@ const Profile = (props) => {
           className='input'
         />
 
-        <Button styleName='submit' label='Submit' handleClick={submit} />
+        <Button styleName='update' label='Update' handleClick={update} />
       </form>
     </>
   );
 };
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {
+  updateUser: updateUser,
+};
 
 const mapStateToProps = (reduxState) => {
   return {

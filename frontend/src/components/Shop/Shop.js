@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import SearchBar from '../SearchBar/SearchBar';
 import './Shop.css';
 
 const Shop = () => {
-  // const [category, setCategory] = useState('');
   return (
     <>
       <SearchBar />

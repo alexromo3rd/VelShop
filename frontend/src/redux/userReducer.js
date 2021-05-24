@@ -1,5 +1,4 @@
 const initialState = {
-  loading: false,
   user: {},
 };
 
@@ -33,9 +32,9 @@ export default function reducer(state = initialState, action) {
 
   switch (type) {
     case SET_USER:
-      return { ...state, user: payload.data, loading: false };
+      return { ...state, user: payload.data };
     case UPDATE_USER:
-      return { ...state, user: payload.data, loading: false };
+      return { ...state, user: payload.data };
     case CLEAR_USER:
       return { ...state, user: payload };
     default:

@@ -14,7 +14,7 @@ const ProductList = (props) => {
 
   useEffect(() => {
     generateProductList();
-  }, [props.productList]);
+  }, []);
 
   const generateProductList = () => {
     setList(

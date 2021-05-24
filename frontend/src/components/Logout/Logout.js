@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Logout.css';
 
-const Logout = (props) => {
+const Logout = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -15,7 +15,6 @@ const Logout = (props) => {
   return (
     <section className='log-out'>
       <p>You have successfully been logged out. Come back soon!</p>
-      <br />
       <img
         src='https://media3.giphy.com/media/MShsAGrAY5QhfxFvQF/giphy.gif?cid=790b76110f3403417a11eceb6c6ef681b98d9fd8ce6f298b&rid=giphy.gif&ct=s'
         alt='ski ya later'

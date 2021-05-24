@@ -36,7 +36,7 @@ const SideBar = (props) => {
       <div>
         {loggedIn ? (
           <div className='user-actions'>
-            <Link to='/profile' className='inline-link'>
+            <Link to={`/profile/${props.user.user_id}`} className='inline-link'>
               <i className='far fa-user'></i>
             </Link>
             <Button
