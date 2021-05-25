@@ -18,6 +18,6 @@ export default (
     <Route path='/profile/:id' component={Profile} />
     <Route path='/shop' component={Shop} />
     <Route path='/products/:id' component={ProductDetails} />
-    <Route path='/cart' component={Cart} />
+    <Route path='/cart/:id?' component={Cart} />
   </Switch>
 );

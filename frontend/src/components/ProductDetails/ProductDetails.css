@@ -10,6 +10,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 
 .name-image h2 {
@@ -24,11 +25,18 @@
   height: 500px;
 }
 
+.name-image p {
+  margin-top: 40px;
+  font-size: 18px;
+}
+
 .details-price {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  padding: 0 40px;
   margin-top: 120px;
+  width: 30%;
 }
 
 .details-price p {
@@ -36,6 +44,17 @@
   font-size: 18px;
 }
 
+.dropdown {
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.dropdown select {
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .details-price button {
-  width: 50%;
+  margin-top: 40px;
+  width: 120px;
 }

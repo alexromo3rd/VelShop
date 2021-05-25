@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProductById } from '../../redux/productListReducer';
+import { getProductById } from '../../redux/productDetailsReducer';
+import SearchBar from '../SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './ProductDetails.css';
 
@@ -31,34 +32,60 @@ const ProductDetails = (props) => {
     console.log(product);
   };
 
-  const addToCart = () => {
-    console.log('Added to cart');
+  const addToCartHandler = () => {
+    history.push(`/cart/${productId}?qty=${qty}`);
   };
 
-  const { category, price, description, name, count_in_stock } =
-    props.productList;
+  const { category, price, description, name, count_in_stock } = props.product;
 
   return (
-    <section className='product-details'>
-      <div className='name-image'>
-        <h2>{name}</h2>
-        <img
-          src='https://james-hare.com/images/imagenotfound.jpg'
-          alt='not found'
-        />
-      </div>
-      <div className='details-price'>
-        <p>Price: ${price}</p>
-        <p>Qty in stock: {count_in_stock}</p>
-        <p>Category: {category}</p>
-        <p>Description: {description}</p>
-        <Button
-          styleName='submit add-to-cart'
-          label='Add to Cart'
-          handleClick={addToCart}
-        />
-      </div>
-    </section>
+    <>
+      <SearchBar />
+      <section className='product-details'>
+        <div className='name-image'>
+          <h2>{name}</h2>
+          <img
+            src='https://james-hare.com/images/imagenotfound.jpg'
+            alt='not found'
+          />
+          <p>Description: {description}</p>
+        </div>
+        <div className='details-price'>
+          <p>Price: ${price}</p>
+          {count_in_stock > 0 ? (
+            <div className='dropdown'>
+              <span>Qty: </span>
+              <select
+                onChange={(e) => {
+                  setQty(e.target.value);
+                }}
+                name='qty'
+                id='qty-select'
+              >
+                <option value='none' selected disabled hidden>
+                  Select
+                </option>
+                {[...Array(count_in_stock).keys()].map((x) => (
+                  <option key={x + 1} value={x + 1}>
+                    {x + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <p>Out of stock</p>
+          )}
+          <p>Category: {category}</p>
+          {count_in_stock > 0 && (
+            <Button
+              styleName='submit add-to-cart'
+              label='Add to Cart'
+              handleClick={addToCartHandler}
+            />
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 
@@ -68,7 +95,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (reduxState) => {
   return {
-    productList: reduxState.productListReducer.productList,
+    product: reduxState.productDetailsReducer.product,
   };
 };
 
