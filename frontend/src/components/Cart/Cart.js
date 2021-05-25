@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import './Cart.css';
 
 const Cart = () => {
@@ -9,4 +10,11 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapDispatchToProps = null;
+
+const mapStateToProps = (reduxState) => {
+  return {
+    cart: reduxState.cartReducer.cart.cartItems,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
