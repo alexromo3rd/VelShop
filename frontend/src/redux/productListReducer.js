@@ -7,6 +7,7 @@ const initialState = {
 
 const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST';
 const GET_PRODUCT_LIST_BY_CATEGORY = 'GET_PRODUCT_LIST_BY_CATEGORY';
+const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 
 export function getProductList() {
   const products = axios.get('/api/products');
@@ -28,6 +29,15 @@ export function getProductListByCategory(category) {
   };
 }
 
+export function getProductById(id) {
+  const productById = axios.get(`/api/products/${id}`);
+
+  return {
+    type: GET_PRODUCT_BY_ID,
+    payload: productById,
+  };
+}
+
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
 
@@ -43,6 +53,12 @@ export default function reducer(state = initialState, action) {
     case GET_PRODUCT_LIST_BY_CATEGORY + '_FULFILLED':
       return { ...state, productList: payload.data, loading: false };
     case GET_PRODUCT_LIST_BY_CATEGORY + '_REJECTED':
+      return { ...state, loading: false };
+    case GET_PRODUCT_BY_ID + '_PENDING':
+      return { ...state, loading: true };
+    case GET_PRODUCT_BY_ID + '_FULFILLED':
+      return { ...state, productList: payload.data, loading: false };
+    case GET_PRODUCT_BY_ID + '_REJECTED':
       return { ...state, loading: false };
     default:
       return state;

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './Product.css';
 
@@ -7,7 +6,7 @@ const Product = ({ product }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/api/products/${product.product_id}`);
+    history.push(`/products/${product.product_id}`);
   };
 
   const { name, price } = product;
