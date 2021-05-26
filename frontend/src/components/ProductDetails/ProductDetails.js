@@ -9,11 +9,9 @@ import './ProductDetails.css';
 const ProductDetails = (props) => {
   const isInitialMount = useRef(true);
   const history = useHistory();
-  const [productId, setProductId] = useState(
-    history.location.pathname.split('/')[2]
-  );
+  const productId = history.location.pathname.split('/')[2];
   const [product, setProduct] = useState({});
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     props.getProductById(productId);
@@ -25,7 +23,7 @@ const ProductDetails = (props) => {
     } else {
       assignProduct();
     }
-  }, [history.location.pathname.split('/')[2]]);
+  }, [productId]);
 
   const assignProduct = () => {
     setProduct(props.productList);
@@ -62,9 +60,6 @@ const ProductDetails = (props) => {
                 name='qty'
                 id='qty-select'
               >
-                <option value='none' selected disabled hidden>
-                  Select
-                </option>
                 {[...Array(count_in_stock).keys()].map((x) => (
                   <option key={x + 1} value={x + 1}>
                     {x + 1}

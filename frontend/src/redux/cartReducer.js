@@ -1,32 +1,25 @@
 import axios from 'axios';
 
-const cartItemsFromStorage = localStorage.getItem('cartItems')
-  ? JSON.parse(localStorage.getItem('cartItems'))
-  : [];
-
 const initialState = {
-  loading: false,
-  cart: { cartItems: cartItemsFromStorage },
+  cartItems: [],
 };
 
 const CART_ADD_ITEM = 'CART_ADD_ITEM';
 const CART_REMOVE_ITEM = 'CART_REMOVE_ITEM';
 
 export function addToCart(id, qty) {
-  const productById = axios.get(`/api/products/${id}`);
-
   return {
     type: CART_ADD_ITEM,
-    payload: { productById, qty },
+    payload: axios
+      .get(`/api/products/${id}`)
+      .then((res) => ({ item: res.data, qty })),
   };
 }
 
 export function removeFromCart(id) {
-  const productById = axios.get(`/api/products/${id}`);
-
   return {
     type: CART_REMOVE_ITEM,
-    payload: productById,
+    payload: axios.get(`/api/products/${id}`),
   };
 }
 
@@ -35,37 +28,32 @@ export default function reducer(state = initialState, action) {
 
   switch (type) {
     case CART_ADD_ITEM + '_PENDING':
-      return { ...state, loading: true };
+      return { ...state };
     case CART_ADD_ITEM + '_FULFILLED':
-      const item = payload;
+      const { item, qty } = payload;
+      console.log(payload);
 
       const existItem = state.cartItems.find(
         (x) => x.product_id === item.product_id
       );
 
       if (existItem) {
-        return (
-          {
-            ...state,
-            cartItems: state.cartItems.map((x) =>
-              x.product_id === item.product_id ? item : x
-            ),
-            loading: false,
-          },
-          localStorage.setItem('cartItems'),
-          JSON.stringify(state.cartItems)
-        );
+        return {
+          ...state,
+          cartItems: state.cartItems.map((x) =>
+            x.product === existItem.product ? item : x
+          ),
+        };
       } else {
-        return (
-          { ...state, cartItems: payload.data, loading: false },
-          localStorage.setItem('cartItems'),
-          JSON.stringify(state.cartItems)
-        );
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        };
       }
     case CART_ADD_ITEM + '_REJECTED':
-      return { ...state, loading: false };
+      return { ...state };
     case CART_REMOVE_ITEM:
-      return { ...state, cartItems: payload.data, loading: false };
+      return { ...state, cart: payload };
     default:
       return state;
   }

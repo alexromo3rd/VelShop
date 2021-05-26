@@ -8,11 +8,9 @@ const initialState = {
 const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 
 export function getProductById(id) {
-  const productById = axios.get(`/api/products/${id}`);
-
   return {
     type: GET_PRODUCT_BY_ID,
-    payload: productById,
+    payload: axios.get(`/api/products/${id}`),
   };
 }
 

@@ -1,8 +1,22 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addToCart } from '../../redux/cartReducer';
 import './Cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
+  const history = useHistory();
+  const productId = history.location.pathname.split('/')[2];
+  const qty = history.location.search
+    ? Number(history.location.search.split('=')[1])
+    : 1;
+
+  useEffect(() => {
+    if (productId) {
+      props.addToCart(productId, qty);
+    }
+  }, [props.addToCart, productId, qty]);
+
   return (
     <>
       <h2>Cart</h2>
@@ -10,11 +24,14 @@ const Cart = () => {
   );
 };
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {
+  addToCart: addToCart,
+};
 
 const mapStateToProps = (reduxState) => {
   return {
-    cart: reduxState.cartReducer.cart.cartItems,
+    cartItems: reduxState.cartReducer.cartItems,
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
