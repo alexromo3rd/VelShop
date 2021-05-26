@@ -19,7 +19,7 @@ export function addToCart(id, qty) {
 export function removeFromCart(id) {
   return {
     type: CART_REMOVE_ITEM,
-    payload: axios.get(`/api/products/${id}`),
+    payload: id,
   };
 }
 
@@ -30,6 +30,7 @@ export default function reducer(state = initialState, action) {
     case CART_ADD_ITEM + '_PENDING':
       return { ...state };
     case CART_ADD_ITEM + '_FULFILLED':
+      console.log(state);
       const { item, qty } = payload;
 
       const existItem = state.cartItems.find(
@@ -40,19 +41,22 @@ export default function reducer(state = initialState, action) {
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
-            x.product === existItem.product ? item : x
+            x.product_id === existItem.product_id ? { ...item, qty } : x
           ),
         };
       } else {
         return {
           ...state,
-          cartItems: [...state.cartItems, item],
+          cartItems: [...state.cartItems, { ...item, qty }],
         };
       }
     case CART_ADD_ITEM + '_REJECTED':
       return { ...state };
     case CART_REMOVE_ITEM:
-      return { ...state, cart: payload };
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product_id !== payload),
+      };
     default:
       return state;
   }

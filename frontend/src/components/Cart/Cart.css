@@ -1,3 +1,27 @@
-.fa-shopping-cart {
-  font-size: 26px;
+.cart {
+  display: flex;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 100px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.cart-item img {
+  height: 100px;
+}
+
+.cart-item p {
+  margin: 0 50px;
+}
+
+.cart-details {
 }

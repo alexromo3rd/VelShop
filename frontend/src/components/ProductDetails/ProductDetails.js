@@ -11,7 +11,7 @@ const ProductDetails = (props) => {
   const history = useHistory();
   const productId = history.location.pathname.split('/')[2];
   const [product, setProduct] = useState({});
-  const [qty, setQty] = useState(1);
+  const [itemQty, setItemQty] = useState(1);
 
   useEffect(() => {
     props.getProductById(productId);
@@ -27,14 +27,14 @@ const ProductDetails = (props) => {
 
   const assignProduct = () => {
     setProduct(props.productList);
-    console.log(product);
   };
 
   const addToCartHandler = () => {
-    history.push(`/cart/${productId}?qty=${qty}`);
+    history.push(`/cart/${productId}?qty=${itemQty}`);
   };
 
-  const { category, price, description, name, count_in_stock } = props.product;
+  const { category, price, description, name, count_in_stock, qty } =
+    props.product;
 
   return (
     <>
@@ -54,8 +54,9 @@ const ProductDetails = (props) => {
             <div className='dropdown'>
               <span>Qty: </span>
               <select
+                value={qty}
                 onChange={(e) => {
-                  setQty(e.target.value);
+                  setItemQty(e.target.value);
                 }}
                 name='qty'
                 id='qty-select'

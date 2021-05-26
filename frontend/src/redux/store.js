@@ -15,8 +15,8 @@ const rootReducer = combineReducers({
 
 function saveToLocalStorage(state) {
   try {
-    const serialisedState = JSON.stringify(Array(state.cartReducer.cartItems));
-    localStorage.setItem('cartItems', serialisedState);
+    const serialisedState = JSON.stringify(state);
+    localStorage.setItem('persistantState', serialisedState);
   } catch (e) {
     console.warn(e);
   }
@@ -24,7 +24,7 @@ function saveToLocalStorage(state) {
 
 function loadFromLocalStorage() {
   try {
-    const serialisedState = localStorage.getItem('cartItems');
+    const serialisedState = localStorage.getItem('persistantState');
     if (serialisedState === null) return undefined;
     return JSON.parse(serialisedState);
   } catch (e) {
