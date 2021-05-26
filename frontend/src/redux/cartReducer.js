@@ -31,7 +31,6 @@ export default function reducer(state = initialState, action) {
       return { ...state };
     case CART_ADD_ITEM + '_FULFILLED':
       const { item, qty } = payload;
-      console.log(payload);
 
       const existItem = state.cartItems.find(
         (x) => x.product_id === item.product_id

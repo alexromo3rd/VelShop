@@ -10,12 +10,15 @@ const Cart = (props) => {
   const qty = history.location.search
     ? Number(history.location.search.split('=')[1])
     : 1;
+  const cart = props.cartItems;
 
   useEffect(() => {
     if (productId) {
       props.addToCart(productId, qty);
     }
   }, [props.addToCart, productId, qty]);
+
+  console.log(cart);
 
   return (
     <>
