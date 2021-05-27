@@ -17,31 +17,43 @@ const Cart = ({ addToCart, cartItems }) => {
     }
   }, [addToCart, productId, qty]);
 
+  const handleClick = (e) => {
+    const { product_id } = cartItems.find(
+      (item) => item.name === e.target.innerText
+    );
+    history.push(`/products/${product_id}`);
+  };
+
   return (
     <div className='cart'>
       <section className='cart-items'>
         {cartItems.length === 0 ? (
           <h1>Your cart is empty</h1>
         ) : (
-          cartItems.map((item) => (
-            <div key={item.product_id} className='cart-item'>
+          cartItems.map(({ product_id, name, price, count_in_stock, qty }) => (
+            <div key={product_id} className='cart-item'>
               <img
                 src='https://james-hare.com/images/imagenotfound.jpg'
                 alt='not found'
               />
-              <p>{item.name}</p>
-              <p>${item.price}</p>
+              <p
+                className='clickable-item-name'
+                onClick={(e) => handleClick(e)}
+              >
+                {name}
+              </p>
+              <p>${price}</p>
               <p>
                 Qty:
                 <select
-                  value={item.qty}
+                  value={qty}
                   onChange={(e) => {
-                    addToCart(item.product_id, Number(e.target.value));
+                    addToCart(product_id, Number(e.target.value));
                   }}
                   name='qty'
                   id='qty-select'
                 >
-                  {[...Array(item.count_in_stock).keys()].map((x) => (
+                  {[...Array(count_in_stock).keys()].map((x) => (
                     <option key={x + 1} value={x + 1}>
                       {x + 1}
                     </option>

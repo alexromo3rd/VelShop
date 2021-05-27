@@ -23,5 +23,10 @@
   margin: 0 50px;
 }
 
+.clickable-item-name:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .cart-details {
 }
