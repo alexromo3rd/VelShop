@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import axios from 'axios';
 import './Login.css';
 
-const Login = (props) => {
+const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
 
-  const login = async () => {
-    try {
-      const user = await axios.post('/api/login', { email, password });
-      props.setUser(user);
-
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+  const login = () => {
+    setUser({ email, password });
   };
 
-  if (props.user.email) {
+  if (user.email) {
     return <Redirect to='/' />;
   }
 

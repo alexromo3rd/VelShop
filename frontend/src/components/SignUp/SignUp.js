@@ -1,31 +1,23 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useHistory, Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { setUser } from '../../redux/userReducer';
+import { createUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import './SignUp.css';
 
-const SignUp = (props) => {
+const SignUp = ({ user, createUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
 
-  const submit = async () => {
-    try {
-      const user = await axios.post('/api/register', { name, email, password });
-      console.log(user);
-      props.setUser(user);
-
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+  const submit = () => {
+    createUser({ name, email, password });
+    history.push('/');
   };
 
-  if (props.user.email) {
+  if (user.email) {
     return <Redirect to='/' />;
   }
 
@@ -70,7 +62,7 @@ const SignUp = (props) => {
 };
 
 const mapDispatchToProps = {
-  setUser: setUser,
+  createUser: createUser,
 };
 
 const mapStateToProps = (reduxState) => {
