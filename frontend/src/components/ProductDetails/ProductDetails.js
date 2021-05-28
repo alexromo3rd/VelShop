@@ -7,27 +7,28 @@ import Button from '../Button/Button';
 import './ProductDetails.css';
 
 const ProductDetails = (props) => {
-  const isInitialMount = useRef(true);
+  // const isInitialMount = useRef(true);
   const history = useHistory();
   const productId = history.location.pathname.split('/')[2];
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
   const [itemQty, setItemQty] = useState(1);
 
   useEffect(() => {
+    console.log('render');
     props.getProductById(productId);
-  }, []);
+  }, [props.getProductById]);
 
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      assignProduct();
-    }
-  }, [productId]);
+  // useEffect(() => {
+  //   if (isInitialMount.current) {
+  //     isInitialMount.current = false;
+  //   } else {
+  //     setProduct(props.productList);
+  //   }
+  // }, [productId, props.productList]);
 
-  const assignProduct = () => {
-    setProduct(props.productList);
-  };
+  // const assignProduct = () => {
+  //   setProduct(props.productList);
+  // };
 
   const addToCartHandler = () => {
     history.push(`/cart/${productId}?qty=${itemQty}`);
@@ -39,6 +40,7 @@ const ProductDetails = (props) => {
   return (
     <>
       <SearchBar />
+      {/* Wrap in conditional if props.product exists then return this jsx section */}
       <section className='product-details'>
         <div className='name-image'>
           <h2>{name}</h2>
