@@ -6,22 +6,22 @@ import { clearUser } from '../../redux/userReducer';
 import Button from '../Button/Button';
 import './Sidebar.css';
 
-const SideBar = (props) => {
+const SideBar = ({ user, clearUser }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
-    if (props.user.email) {
+    if (user.email) {
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
     }
-  }, [props.user]);
+  }, [user]);
 
   const logout = async () => {
     try {
       await axios.delete('/api/logout');
-      props.clearUser();
+      clearUser();
       history.push('/logout');
     } catch (error) {
       console.log(error);
@@ -36,7 +36,7 @@ const SideBar = (props) => {
       <div>
         {loggedIn ? (
           <div className='user-actions'>
-            <Link to={`/profile/${props.user.user_id}`} className='inline-link'>
+            <Link to={`/profile/${user.user_id}`} className='inline-link'>
               <i className='far fa-user'></i>
             </Link>
             <Button

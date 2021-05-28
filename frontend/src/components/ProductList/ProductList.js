@@ -1,26 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Product from '../Product/Product';
 import './ProductList.css';
 
 const ProductList = ({ list }) => {
   const [products, setProducts] = useState([]);
-  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      generateProductList();
-    }
-  }, [list]);
-
-  const generateProductList = () => {
+    console.log('render');
     setProducts(
       list.map((product) => {
         return <Product key={product.product_id} product={product} />;
       })
     );
-  };
+  }, [list]);
 
   return <section className='products'>{products}</section>;
 };

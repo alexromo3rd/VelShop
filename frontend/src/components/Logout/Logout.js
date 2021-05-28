@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Logout.css';
 
@@ -10,7 +9,7 @@ const Logout = () => {
     setTimeout(() => {
       history.push('/');
     }, 3000);
-  }, []);
+  }, [history]);
 
   return (
     <section className='log-out'>
@@ -27,10 +26,4 @@ const Logout = () => {
   );
 };
 
-const mapStateToProps = (reduxState) => {
-  return {
-    user: reduxState.userReducer.user,
-  };
-};
-
-export default connect(mapStateToProps)(Logout);
+export default Logout;

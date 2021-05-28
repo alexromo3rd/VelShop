@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
@@ -11,35 +11,27 @@ import {
 } from '../../redux/productListReducer';
 import './Shop.css';
 
-const Shop = (props) => {
-  const isInitialMount = useRef(true);
+const Shop = ({
+  getProductList,
+  getProductListByCategory,
+  loading,
+  productList,
+}) => {
   const history = useHistory();
 
   useEffect(() => {
-    props.getProductList();
-  }, []);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      generateFilteredProductList();
-    }
-  }, [history.location.pathname.split('/')[2]]);
-
-  const generateFilteredProductList = () => {
     if (history.location.pathname === '/shop') {
-      props.getProductList();
+      getProductList();
     } else {
-      props.getProductListByCategory(history.location.pathname.split('/')[2]);
+      getProductListByCategory(history.location.pathname.split('/')[2]);
     }
-  };
+  }, [getProductList, getProductListByCategory, history.location.pathname]);
 
   return (
     <>
       <SearchBar />
       <Categories />
-      {props.loading ? <Loader /> : <ProductList list={props.productList} />}
+      {loading ? <Loader /> : <ProductList list={productList} />}
     </>
   );
 };

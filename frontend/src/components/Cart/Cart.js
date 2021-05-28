@@ -13,10 +13,11 @@ const Cart = ({ addToCart, cartItems }) => {
 
   useEffect(() => {
     if (productId) {
+      console.log('render');
       addToCart(productId, qty);
       history.push('/cart');
     }
-  }, [addToCart, productId, qty]);
+  }, [addToCart, history, productId, qty]);
 
   const handleClick = (e) => {
     const { product_id } = cartItems.find(
