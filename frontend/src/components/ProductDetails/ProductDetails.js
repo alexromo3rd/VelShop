@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductById } from '../../redux/productDetailsReducer';
@@ -6,36 +6,20 @@ import SearchBar from '../SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './ProductDetails.css';
 
-const ProductDetails = (props) => {
-  // const isInitialMount = useRef(true);
+const ProductDetails = ({ getProductById, product }) => {
   const history = useHistory();
   const productId = history.location.pathname.split('/')[2];
-  // const [product, setProduct] = useState({});
   const [itemQty, setItemQty] = useState(1);
 
   useEffect(() => {
-    console.log('render');
-    props.getProductById(productId);
-  }, [props.getProductById]);
-
-  // useEffect(() => {
-  //   if (isInitialMount.current) {
-  //     isInitialMount.current = false;
-  //   } else {
-  //     setProduct(props.productList);
-  //   }
-  // }, [productId, props.productList]);
-
-  // const assignProduct = () => {
-  //   setProduct(props.productList);
-  // };
+    getProductById(productId);
+  }, [getProductById, productId]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${productId}?qty=${itemQty}`);
   };
 
-  const { category, price, description, name, count_in_stock, qty } =
-    props.product;
+  const { category, price, description, name, count_in_stock, qty } = product;
 
   return (
     <>
