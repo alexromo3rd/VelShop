@@ -6,13 +6,16 @@
   display: flex;
   flex-direction: column;
   margin: 50px 100px;
+  width: 40vw;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
   margin-top: 10px;
+  padding: 0 20px;
 }
 
 .cart-item img {
@@ -29,4 +32,12 @@
 }
 
 .cart-details {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 100px;
+}
+
+.cart-details h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }

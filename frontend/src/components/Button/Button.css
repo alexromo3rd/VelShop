@@ -39,3 +39,17 @@
 .search {
   margin: 0 auto;
 }
+
+.remove {
+  width: 30px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.remove:hover {
+  background-color: red;
+  color: black;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}

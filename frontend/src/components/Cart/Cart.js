@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToCart } from '../../redux/cartReducer';
+import { addToCart, removeFromCart } from '../../redux/cartReducer';
+import Button from '../Button/Button';
 import './Cart.css';
 
-const Cart = ({ addToCart, cartItems }) => {
+const Cart = ({ addToCart, removeFromCart, cartItems }) => {
   const history = useHistory();
   const productId = history.location.pathname.split('/')[2];
   const qty = history.location.search
@@ -13,17 +14,24 @@ const Cart = ({ addToCart, cartItems }) => {
 
   useEffect(() => {
     if (productId) {
-      console.log('render');
       addToCart(productId, qty);
       history.push('/cart');
     }
   }, [addToCart, history, productId, qty]);
+
+  const removeFromCartHandler = (id) => {
+    removeFromCart(id);
+  };
 
   const handleClick = (e) => {
     const { product_id } = cartItems.find(
       (item) => item.name === e.target.innerText
     );
     history.push(`/products/${product_id}`);
+  };
+
+  const checkoutHandler = () => {
+    history.push('/login?redirect=shipping');
   };
 
   return (
@@ -62,17 +70,39 @@ const Cart = ({ addToCart, cartItems }) => {
                   ))}
                 </select>
               </p>
+              <Button
+                styleName='remove'
+                label={<i className='fas fa-trash'></i>}
+                handleClick={() => removeFromCartHandler(product_id)}
+              />
             </div>
           ))
         )}
       </section>
-      <section className='cart-details'></section>
+      <section className='cart-details'>
+        <h2 className='subtotal'>
+          Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
+        </h2>
+        <h2>
+          $
+          {cartItems
+            .reduce((acc, item) => acc + item.qty * item.price, 0)
+            .toFixed(2)}
+        </h2>
+        <Button
+          disabled={cartItems.length === 0}
+          styleName='submit'
+          label='Checkout'
+          handleClick={checkoutHandler}
+        />
+      </section>
     </div>
   );
 };
 
 const mapDispatchToProps = {
   addToCart: addToCart,
+  removeFromCart: removeFromCart,
 };
 
 const mapStateToProps = (reduxState) => {

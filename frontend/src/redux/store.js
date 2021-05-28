@@ -13,32 +13,25 @@ const rootReducer = combineReducers({
   cartReducer,
 });
 
-function saveToLocalStorage(state) {
-  try {
-    const serialisedState = JSON.stringify(state);
-    localStorage.setItem('persistantState', serialisedState);
-  } catch (e) {
-    console.warn(e);
-  }
-}
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : [];
 
-function loadFromLocalStorage() {
-  try {
-    const serialisedState = localStorage.getItem('persistantState');
-    if (serialisedState === null) return undefined;
-    return JSON.parse(serialisedState);
-  } catch (e) {
-    console.warn(e);
-    return undefined;
-  }
-}
+const initialState = {
+  cartReducer: { cartItems: cartItemsFromStorage },
+};
 
 const store = createStore(
   rootReducer,
-  loadFromLocalStorage(),
+  initialState,
   composeWithDevTools(applyMiddleware(promiseMiddleware))
 );
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => {
+  localStorage.setItem(
+    'cartItems',
+    JSON.stringify(store.getState().cartReducer.cartItems)
+  );
+});
 
 export default store;

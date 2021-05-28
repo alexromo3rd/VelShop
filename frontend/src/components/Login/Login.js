@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setUser } from '../../redux/userReducer';
 import FormInput from '../FormInput/FormInput';
@@ -9,14 +9,23 @@ import './Login.css';
 const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
+  console.log(history);
 
-  const login = () => {
+  const redirect = history.location.search
+    ? history.location.search.split('=')[1]
+    : '/';
+
+  useEffect(() => {
+    if (user.email) {
+      history.push(redirect);
+    }
+  }, [history, redirect, user.email]);
+
+  const login = (e) => {
+    e.preventDefault();
     setUser({ email, password });
   };
-
-  if (user.email) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <>
@@ -42,7 +51,11 @@ const Login = ({ user, setUser }) => {
           className='input'
         />
 
-        <Button styleName='submit' label='Login' handleClick={login} />
+        <Button
+          styleName='submit'
+          label='Login'
+          handleClick={(e) => login(e)}
+        />
       </form>
     </>
   );
