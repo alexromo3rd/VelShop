@@ -14,6 +14,7 @@ const Cart = ({ addToCart, cartItems }) => {
   useEffect(() => {
     if (productId) {
       addToCart(productId, qty);
+      history.push('/cart');
     }
   }, [addToCart, productId, qty]);
 

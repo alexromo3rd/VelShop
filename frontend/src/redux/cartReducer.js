@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
     case CART_ADD_ITEM + '_PENDING':
       return { ...state };
     case CART_ADD_ITEM + '_FULFILLED':
-      console.log(state);
+      console.log(payload);
       const { item, qty } = payload;
 
       const existItem = state.cartItems.find(
