@@ -11,6 +11,7 @@ const ProductDetails = ({ getProductById, product }) => {
   const productId = history.location.pathname.split('/')[2];
   const [itemQty, setItemQty] = useState(1);
 
+  // useLayoutEffect instead?
   useEffect(() => {
     getProductById(productId);
   }, [getProductById, productId]);
