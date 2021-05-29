@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import SearchBar from '../SearchBar/SearchBar';
 import Categories from '../Categories/Categories';
-import Loader from '../Loader/Loader';
 import {
   getProductList,
   getProductListByCategory,
@@ -17,6 +16,7 @@ const Shop = ({
   loading,
   productList,
 }) => {
+  const [searchValue, setSearchValue] = useState('');
   const history = useHistory();
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const Shop = ({
 
   return (
     <>
-      <SearchBar />
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       <Categories />
-      {loading ? <Loader /> : <ProductList list={productList} />}
+      <ProductList searchValue={searchValue} productList={productList} />
     </>
   );
 };
