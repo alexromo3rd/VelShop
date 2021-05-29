@@ -6,7 +6,7 @@ import { clearUser } from '../../redux/userReducer';
 import Button from '../Button/Button';
 import './Sidebar.css';
 
-const SideBar = ({ user, clearUser }) => {
+const SideBar = ({ user, clearUser, cartItems }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
 
@@ -60,14 +60,17 @@ const SideBar = ({ user, clearUser }) => {
         <Link to='/' className='link'>
           Home
         </Link>
-        <Link to='/videos' className='link'>
+        {/* <Link to='/videos' className='link'>
           Videos
         </Link>
         <Link to='/photos' className='link'>
           Photos
-        </Link>
+        </Link> */}
         <Link to='/shop' className='link'>
           Shop
+        </Link>
+        <Link to='/cart' className='link'>
+          Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </Link>
         <Link to='/contact' className='link'>
           Contact
@@ -110,6 +113,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (reduxState) => {
   return {
     user: reduxState.userReducer.user,
+    cartItems: reduxState.cartReducer.cartItems,
   };
 };
 

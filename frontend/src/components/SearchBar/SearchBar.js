@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import './SearchBar.css';
 
@@ -14,9 +13,6 @@ const SearchBar = ({ searchValue, setSearchValue }) => {
         value={searchValue}
         className='input'
       />
-      <Link to='/cart' className='inline-link'>
-        <i className='fas fa-shopping-cart'></i>
-      </Link>
     </section>
   );
 };

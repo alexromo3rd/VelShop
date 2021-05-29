@@ -140,12 +140,12 @@ table {
 }
 
 .sidebar {
-  width: 25%;
+  width: 20%;
   border-right: 1px solid black;
 }
 
 .main {
-  width: 75%;
+  width: 80%;
 }
 
 .form {

@@ -29,8 +29,8 @@ const Shop = ({
 
   return (
     <>
-      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       <Categories />
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       <ProductList searchValue={searchValue} productList={productList} />
     </>
   );

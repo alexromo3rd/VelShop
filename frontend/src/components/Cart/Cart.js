@@ -89,12 +89,13 @@ const Cart = ({ addToCart, removeFromCart, cartItems }) => {
             .reduce((acc, item) => acc + item.qty * item.price, 0)
             .toFixed(2)}
         </h2>
-        <Button
-          disabled={cartItems.length === 0}
-          styleName='submit'
-          label='Checkout'
-          handleClick={checkoutHandler}
-        />
+        {cartItems.length !== 0 && (
+          <Button
+            styleName='submit'
+            label='Checkout'
+            handleClick={checkoutHandler}
+          />
+        )}
       </section>
     </div>
   );

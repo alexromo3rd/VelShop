@@ -12,20 +12,6 @@
   cursor: pointer;
 }
 
-.update {
-  margin-top: 20px;
-  font-size: 20px;
-  background-color: #fffaf0;
-  border-radius: 5px;
-}
-.update:hover {
-  color: #fffaf0;
-  background-color: black;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
 .logout {
   font-size: 24px;
   background-color: #fffaf0;
@@ -34,10 +20,6 @@
 
 .logout:hover {
   cursor: pointer;
-}
-
-.search {
-  margin: 0 auto;
 }
 
 .remove {

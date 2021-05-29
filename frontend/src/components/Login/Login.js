@@ -10,7 +10,6 @@ const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  console.log(history);
 
   const redirect = history.location.search
     ? history.location.search.split('=')[1]

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductById } from '../../redux/productDetailsReducer';
-import SearchBar from '../SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './ProductDetails.css';
 
@@ -11,7 +10,6 @@ const ProductDetails = ({ getProductById, product }) => {
   const productId = history.location.pathname.split('/')[2];
   const [itemQty, setItemQty] = useState(1);
 
-  // useLayoutEffect instead?
   useEffect(() => {
     getProductById(productId);
   }, [getProductById, productId]);
@@ -24,8 +22,6 @@ const ProductDetails = ({ getProductById, product }) => {
 
   return (
     <>
-      <SearchBar />
-      {/* Wrap in conditional if props.product exists then return this jsx section */}
       <section className='product-details'>
         <div className='name-image'>
           <h2>{name}</h2>

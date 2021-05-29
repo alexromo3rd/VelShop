@@ -45,7 +45,7 @@ const Profile = ({ user, match, updateUser }) => {
           className='input'
         />
 
-        <Button styleName='update' label='Update' handleClick={update} />
+        <Button styleName='submit' label='Update' handleClick={update} />
       </form>
     </>
   );
