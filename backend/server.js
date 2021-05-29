@@ -16,6 +16,8 @@ const {
   deleteUser,
 } = require('./controllers/userCtrl');
 
+const { submitPayment } = require('./controllers/paymentCtrl.js');
+
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express();
@@ -55,6 +57,9 @@ app.get('/api/products', getAllProducts);
 app.get('/api/products/categories', getProductCategories);
 app.get('/api/products/:id', getProduct);
 app.post('/api/products', createProduct);
+
+// Payment endpoint
+app.post('/api/payment', submitPayment);
 
 app.listen(SERVER_PORT, () => {
   console.log(`Listening on port ${SERVER_PORT}`);

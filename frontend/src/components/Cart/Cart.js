@@ -31,12 +31,19 @@ const Cart = ({ addToCart, removeFromCart, cartItems }) => {
   };
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping');
+    history.push('/login?redirect=checkout');
   };
 
   return (
     <div className='cart'>
       <section className='cart-items'>
+        <div className='item-heading'>
+          <p>Product</p>
+          <p>Description</p>
+          <p>Price</p>
+          <p>Quantity</p>
+          <p>Remove</p>
+        </div>
         {cartItems.length === 0 ? (
           <h1>Your cart is empty</h1>
         ) : (
@@ -52,9 +59,8 @@ const Cart = ({ addToCart, removeFromCart, cartItems }) => {
               >
                 {name}
               </p>
-              <p>${price}</p>
-              <p>
-                Qty:
+              <p className='price'>${price}</p>
+              <p className='drop-down'>
                 <select
                   value={qty}
                   onChange={(e) => {
@@ -81,7 +87,7 @@ const Cart = ({ addToCart, removeFromCart, cartItems }) => {
       </section>
       <section className='cart-details'>
         <h2 className='subtotal'>
-          Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
+          Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </h2>
         <h2>
           $

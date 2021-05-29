@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile';
 import Shop from './components/Shop/Shop';
 import Cart from './components/Cart/Cart';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import CheckoutForm from './components/CheckoutForm/CheckoutForm';
 
 export default (
   <Switch>
@@ -19,5 +20,6 @@ export default (
     <Route path='/shop' component={Shop} />
     <Route path='/products/:id' component={ProductDetails} />
     <Route path='/cart/:id?' component={Cart} />
+    <Route path='/checkout' component={CheckoutForm} />
   </Switch>
 );

@@ -13,7 +13,7 @@
 }
 
 .logout {
-  font-size: 24px;
+  font-size: 20px;
   background-color: #fffaf0;
   border: none;
 }
@@ -23,15 +23,11 @@
 }
 
 .remove {
-  width: 30px;
-  border-radius: 5px;
-  padding: 5px;
+  background-color: #fffaf0;
+  border: none;
+  padding-right: 40px;
 }
 
 .remove:hover {
-  background-color: red;
-  color: black;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
   cursor: pointer;
 }
