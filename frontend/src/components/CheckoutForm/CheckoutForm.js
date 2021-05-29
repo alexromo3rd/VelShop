@@ -52,7 +52,7 @@ const CheckoutForm = ({ cartItems }) => {
         const { id } = paymentMethod;
         const res = await axios.post('/api/payment', {
           id,
-          amount: subTotal * 100,
+          amount: Math.round(subTotal * 100),
         });
 
         if (res.data.success) {
