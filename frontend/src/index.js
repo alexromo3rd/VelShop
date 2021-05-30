@@ -8,7 +8,7 @@ import store from './redux/store';
 import './index.css';
 import App from './App';
 
-const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+const stripePromise = loadStripe('pk_test_fm2RtiUeglz5oQL8GXe4xjzM');
 
 ReactDOM.render(
   <React.StrictMode>
