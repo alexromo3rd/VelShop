@@ -60,8 +60,6 @@ app.post('/api/products', createProduct);
 // Payment endpoint
 app.post('/api/payment', submitPayment);
 
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')));
 
