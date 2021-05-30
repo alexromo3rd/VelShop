@@ -1,3 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.checkout {
+  grid-column-start: 2;
+  border: 1px solid red;
+}
+
 .FormGroup {
   margin: 0 15px 20px;
   padding: 0;
@@ -23,19 +34,19 @@
 }
 
 .StripeElement {
-  width: 50%;
+  width: 100%;
   padding: 11px 15px 11px 0;
 }
 
 .checkout button {
+  margin: 0 auto;
   display: block;
   font-size: 16px;
-  width: calc(100% - 30px);
+  width: 25%;
   height: 40px;
-  margin: 40px 15px 0;
-  background-color: #f6a4eb;
+  background-color: #7bb6e7;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 #ffb9f6;
+    inset 0 1px 0 #72bbf7;
   border-radius: 4px;
   color: #fff;
   font-weight: 600;
@@ -46,8 +57,8 @@
 }
 
 .checkout button:active {
-  background-color: #d782d9;
+  background-color: #6ae27a;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 #e298d8;
+    inset 0 1px 0 #59e66c;
   transform: scale(0.99);
 }

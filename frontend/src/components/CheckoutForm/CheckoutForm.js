@@ -9,18 +9,14 @@ const CARD_OPTIONS = {
   iconStyle: 'solid',
   style: {
     base: {
-      iconColor: 'black',
-      color: '#000',
-      fontWeight: 500,
-      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
-      fontSmoothing: 'antialiased',
-      ':-webkit-autofill': { color: '#fce883' },
-      '::placeholder': { color: '#87bbfd' },
+      color: '#424770',
+      '::placeholder': {
+        color: '#aab7c4',
+      },
     },
     invalid: {
-      iconColor: ' #FFCCCC ',
-      color: ' #FFCCCC ',
+      color: '#9e2146',
     },
   },
 };
@@ -71,7 +67,7 @@ const CheckoutForm = ({ cartItems }) => {
   };
 
   return (
-    <>
+    <section className='container'>
       {!success ? (
         <form className='checkout' onSubmit={handleSubmit}>
           <fieldset className='FormGroup'>
@@ -89,7 +85,7 @@ const CheckoutForm = ({ cartItems }) => {
           </h2>
         </>
       )}
-    </>
+    </section>
   );
 };
 
