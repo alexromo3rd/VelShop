@@ -6,6 +6,7 @@ const initialState = {
 
 const CART_ADD_ITEM = 'CART_ADD_ITEM';
 const CART_REMOVE_ITEM = 'CART_REMOVE_ITEM';
+const CLEAR_CART = 'CLEAR_CART';
 
 export function addToCart(id, qty) {
   return {
@@ -20,6 +21,13 @@ export function removeFromCart(id) {
   return {
     type: CART_REMOVE_ITEM,
     payload: id,
+  };
+}
+
+export function clearCart() {
+  return {
+    type: CLEAR_CART,
+    payload: [],
   };
 }
 
@@ -55,6 +63,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.product_id !== payload),
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: payload,
       };
     default:
       return state;
