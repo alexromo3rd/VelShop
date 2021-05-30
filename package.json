@@ -19,6 +19,7 @@
   "homepage": "https://github.com/alexromo3rd/VelShop#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-session": "^1.4.0",
     "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
