@@ -2,7 +2,7 @@
   "name": "velshop",
   "version": "1.0.0",
   "description": "Vel the Wonder App",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node backend/server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
