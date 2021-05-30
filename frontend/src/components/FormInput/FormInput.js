@@ -9,6 +9,7 @@ const FormInput = ({
   onChange,
   value,
   className,
+  required = false,
 }) => {
   return (
     <>
@@ -21,6 +22,7 @@ const FormInput = ({
         onChange={onChange}
         value={value}
         className={className}
+        required={required}
       />
     </>
   );

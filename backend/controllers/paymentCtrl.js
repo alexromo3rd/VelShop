@@ -13,7 +13,6 @@ module.exports = {
         payment_method: id,
         confirm: true,
       });
-      console.log('Payment', payment);
 
       res.status(200).send({ message: 'Payment successful', success: true });
     } catch (error) {

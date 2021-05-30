@@ -3,26 +3,45 @@ import { useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import FormInput from '../FormInput/FormInput';
 import './CheckoutForm.css';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
   style: {
     base: {
+      color: '#32325D',
+      fontWeight: 500,
+      fontFamily: 'Source Code Pro, Consolas, Menlo, monospace',
       fontSize: '16px',
-      color: '#424770',
+      fontSmoothing: 'antialiased',
+
       '::placeholder': {
-        color: '#aab7c4',
+        color: '#CFD7DF',
+      },
+      ':-webkit-autofill': {
+        color: '#e39f48',
       },
     },
     invalid: {
-      color: '#9e2146',
+      color: '#E25950',
+
+      '::placeholder': {
+        color: '#FFCCA5',
+      },
     },
   },
 };
 
-const CheckoutForm = ({ cartItems }) => {
+const CheckoutForm = ({ cartItems, user }) => {
   const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [name, setName] = useState(user.name);
+  const [city, setCity] = useState('Some City');
+  const [line1, setLine1] = useState('555 Fake Street');
+  const [line2, setLine2] = useState('');
+  const [myState, setMyState] = useState('TX');
+  const [phone, setPhone] = useState('123456789');
   const history = useHistory();
   const subTotal = cartItems
     .reduce((acc, item) => acc + item.qty * item.price, 0)
@@ -41,6 +60,18 @@ const CheckoutForm = ({ cartItems }) => {
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
+      billing_details: {
+        address: {
+          city,
+          country: 'US',
+          line1,
+          line2,
+          state: myState,
+        },
+        email,
+        name,
+        phone,
+      },
     });
 
     if (!error) {
@@ -72,6 +103,89 @@ const CheckoutForm = ({ cartItems }) => {
         <form className='checkout' onSubmit={handleSubmit}>
           <fieldset className='FormGroup'>
             <div className='FormRow'>
+              <FormInput
+                name='name'
+                label='*Name'
+                type='text'
+                placeholder='name...'
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='email'
+                label='*Email'
+                type='email'
+                placeholder='email...'
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='phone'
+                label='*Phone'
+                type='tel'
+                placeholder='phone number...'
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='line1'
+                label='*Address 1'
+                type='text'
+                placeholder='address...'
+                onChange={(e) => setLine1(e.target.value)}
+                value={line1}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='line2'
+                label='Address 2'
+                type='text'
+                placeholder='address...'
+                onChange={(e) => setLine2(e.target.value)}
+                value={line2}
+                className='input'
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='city'
+                label='*City'
+                type='text'
+                placeholder='city...'
+                onChange={(e) => setCity(e.target.value)}
+                value={city}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
+              <FormInput
+                name='state'
+                label='*State'
+                type='text'
+                placeholder='state...'
+                onChange={(e) => setMyState(e.target.value)}
+                value={myState}
+                className='input'
+                required={true}
+              />
+            </div>
+            <div className='FormRow'>
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
@@ -91,6 +205,7 @@ const CheckoutForm = ({ cartItems }) => {
 
 const mapStateToProps = (reduxState) => {
   return {
+    user: reduxState.userReducer.user,
     cartItems: reduxState.cartReducer.cartItems,
   };
 };
