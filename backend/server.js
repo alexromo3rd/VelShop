@@ -19,7 +19,7 @@ const {
 
 const { submitPayment } = require('./controllers/paymentCtrl.js');
 
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
+const { PORT, DATABASE_URL, SESSION_SECRET } = process.env;
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use(
 );
 
 massive({
-  connectionString: CONNECTION_STRING,
+  connectionString: DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 })
   .then((db) => {
@@ -66,6 +66,6 @@ app.get('*', (req, res) =>
   res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
 );
 
-app.listen(SERVER_PORT, () => {
-  console.log(`Listening on port ${SERVER_PORT}`);
+app.listen(PORT || 5000, () => {
+  console.log(`Listening on port ${PORT}`);
 });
