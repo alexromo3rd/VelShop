@@ -1,11 +1,13 @@
 import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
+import NavBar from './components/NavBar/NavBar';
 import routes from './routes';
 import './App.css';
 
 const App = () => {
   return (
     <main className='App'>
+      <NavBar />
       <section className='sidebar'>
         <Sidebar className='sidebar' />
       </section>

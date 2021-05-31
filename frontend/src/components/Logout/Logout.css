@@ -9,3 +9,27 @@
 .log-out p {
   font-size: 24px;
 }
+
+@media (max-width: 800px) {
+  .log-out img {
+    height: 400px;
+  }
+
+  .log-out p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 550px) {
+  .log-out {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  .log-out img {
+    height: 300px;
+  }
+
+  .log-out p {
+    font-size: 14px;
+  }
+}

@@ -54,8 +54,8 @@ module.exports = {
       if (foundUser[0].user_id === Number(id)) {
         await db.user.delete_user({ id });
 
-        res.status(200).send('Successfully deleted account');
         req.session.destroy();
+        res.status(200).send('Successfully deleted account');
       } else {
         res.stats(400).send('User does not match');
       }

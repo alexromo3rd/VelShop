@@ -1,0 +1,40 @@
+nav {
+  display: none;
+  height: 60px;
+  width: 100%;
+}
+
+@media (max-width: 1300px) {
+  nav {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+  }
+}

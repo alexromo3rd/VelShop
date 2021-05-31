@@ -18,3 +18,17 @@
   grid-column: 7;
   font-size: 26px;
 }
+
+@media (max-width: 900px) {
+  #searchValue {
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 7;
+  }
+}
+
+@media (max-width: 500px) {
+  #searchValue {
+    display: none;
+  }
+}

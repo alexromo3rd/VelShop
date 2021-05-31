@@ -17,3 +17,16 @@
   text-align: center;
   line-height: 36px;
 }
+
+@media (max-width: 500px) {
+  .product {
+    margin: 0 auto;
+    margin-top: 25px;
+    width: 200px;
+  }
+
+  .product img {
+    height: 200px;
+    width: 200px;
+  }
+}

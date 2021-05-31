@@ -60,12 +60,6 @@ const SideBar = ({ user, clearUser, cartItems }) => {
         <Link to='/' className='link'>
           Home
         </Link>
-        {/* <Link to='/videos' className='link'>
-          Videos
-        </Link>
-        <Link to='/photos' className='link'>
-          Photos
-        </Link> */}
         <Link to='/shop' className='link'>
           Shop
         </Link>

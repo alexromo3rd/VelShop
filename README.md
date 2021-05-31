@@ -5,8 +5,8 @@ E-commerce full stack project
 - users should be able to find products
 - users should be able to purchase products
 - users should be able to register an account, and log in and log out
-- users should be able to delete an account
 - users should be able to have a cart
+- users should be able to checkout and purchase items
 - user profile page
 
 ## ICEBOX
@@ -15,6 +15,7 @@ E-commerce full stack project
 - order history
 - ability to log in with google
 - wishlist/like/favorite products
+- users should be able to delete an account
 - users should be able to sign up for promotional emails
 - events page to display info on upcoming performances
 

@@ -26,7 +26,6 @@ export function setUser(userObj) {
 
 export function updateUser(userObj) {
   const { user_id, email, password } = userObj;
-  console.log(userObj);
 
   return {
     type: UPDATE_USER,
