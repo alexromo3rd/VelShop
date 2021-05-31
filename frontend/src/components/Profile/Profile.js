@@ -23,7 +23,9 @@ const Profile = ({ user, match, updateUser }) => {
   return (
     <>
       <form className='form'>
-        <h2>{user.name}, You may update your account info below.</h2>
+        <h2>
+          {user.name.split(' ')[0]}, You may update your account info below.
+        </h2>
 
         <FormInput
           name='email'
