@@ -47,6 +47,9 @@ const CheckoutForm = ({ cartItems, user, clearCart }) => {
   const subTotal = cartItems
     .reduce((acc, item) => acc + item.qty * item.price, 0)
     .toFixed(2);
+  const itemList = cartItems.map((item) => {
+    return `${item.name} - QTY: ${item.qty}`;
+  });
   const stripe = useStripe();
   const elements = useElements();
 
@@ -82,9 +85,15 @@ const CheckoutForm = ({ cartItems, user, clearCart }) => {
           id,
           amount: Math.round(subTotal * 100),
         });
+        const message = `Thank you for your purchase! Hope you enjoy your merch! \nItems purchased: \n${itemList}`;
 
         if (res.data.success) {
           setSuccess(true);
+          axios.post('/api/send', {
+            name: user.name,
+            email: user.email,
+            message,
+          });
           clearCart();
           setTimeout(() => {
             history.push('/');

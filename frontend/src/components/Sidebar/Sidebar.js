@@ -33,7 +33,7 @@ const SideBar = ({ user, clearUser, cartItems }) => {
       <Link to='/' className='title link'>
         Vel Shop
       </Link>
-      <nav className='navigation'>
+      <div className='navigation'>
         <Link to='/' className='link'>
           Home
         </Link>
@@ -64,7 +64,7 @@ const SideBar = ({ user, clearUser, cartItems }) => {
         <Link to='/cart' className='link'>
           Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </Link>
-      </nav>
+      </div>
       <div className='social-media-links'>
         <a
           href='https://www.instagram.com/vel_nine'

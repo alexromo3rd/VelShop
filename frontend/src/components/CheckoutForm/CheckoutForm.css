@@ -106,4 +106,9 @@
   .checkout {
     width: 100%;
   }
+
+  .payment-successful {
+    width: 80%;
+    font-size: 16px;
+  }
 }

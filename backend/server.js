@@ -18,6 +18,7 @@ const {
 } = require('./controllers/userCtrl');
 
 const { submitPayment } = require('./controllers/paymentCtrl.js');
+const { sendEmail } = require('./controllers/nodeMailerCtrl');
 
 const { PORT, DATABASE_URL, SESSION_SECRET } = process.env;
 
@@ -61,6 +62,9 @@ app.post('/api/products', createProduct);
 
 // Payment endpoint
 app.post('/api/payment', submitPayment);
+
+// Nodemailer endpoint
+app.post('/api/send', sendEmail);
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
