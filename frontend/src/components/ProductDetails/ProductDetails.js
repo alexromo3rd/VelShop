@@ -30,29 +30,31 @@ const ProductDetails = ({ getProductById, product }) => {
           <p>Description: {description}</p>
         </div>
         <div className='details-price'>
-          <p>Price: ${price}</p>
-          {count_in_stock > 0 ? (
-            <div className='dropdown'>
-              <span>Qty: </span>
-              <select
-                value={qty}
-                onChange={(e) => {
-                  setItemQty(e.target.value);
-                }}
-                name='qty'
-                id='qty-select'
-              >
-                {[...Array(count_in_stock).keys()].map((x) => (
-                  <option key={x + 1} value={x + 1}>
-                    {x + 1}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ) : (
-            <p>Out of stock</p>
-          )}
-          <p>Category: {category}</p>
+          <div>
+            <p>Price: ${price}</p>
+            {count_in_stock > 0 ? (
+              <div className='dropdown'>
+                <span>Qty: </span>
+                <select
+                  value={qty}
+                  onChange={(e) => {
+                    setItemQty(e.target.value);
+                  }}
+                  name='qty'
+                  id='qty-select'
+                >
+                  {[...Array(count_in_stock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <p>Out of stock</p>
+            )}
+            <p>Category: {category}</p>
+          </div>
           {count_in_stock > 0 && (
             <Button
               styleName='submit add-to-cart'

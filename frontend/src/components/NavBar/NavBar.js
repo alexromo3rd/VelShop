@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -30,13 +30,8 @@ const NavBar = ({ user, clearUser, cartItems }) => {
         <Link to='/cart'>
           Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </Link>
-        <Link to='/contact'>Contact</Link>
         {user.email && (
-          <Button
-            styleName='logout'
-            label='Logout'
-            handleClick={logout}
-          ></Button>
+          <Button styleName='logout' label='Logout' handleClick={logout} />
         )}
       </ul>
     </nav>

@@ -31,43 +31,38 @@ const SideBar = ({ user, clearUser, cartItems }) => {
   return (
     <>
       <Link to='/' className='title link'>
-        Vel the Wonder
+        Vel Shop
       </Link>
-      <div>
-        {loggedIn ? (
-          <div className='user-actions'>
-            <Link to={`/profile/${user.user_id}`} className='inline-link'>
-              <i className='far fa-user'></i>
-            </Link>
-            <Button
-              styleName='logout'
-              label={<i className='fas fa-sign-out-alt'></i>}
-              handleClick={logout}
-            ></Button>
-          </div>
-        ) : (
-          <div className='user-actions'>
-            <Link to='/signup' className='inline-link'>
-              Sign Up
-            </Link>
-            <Link to='/login' className='inline-link'>
-              Login
-            </Link>
-          </div>
-        )}
-      </div>
       <nav className='navigation'>
         <Link to='/' className='link'>
           Home
         </Link>
+        {loggedIn ? (
+          <>
+            <Link to={`/profile/${user.user_id}`} className='link'>
+              Profile
+            </Link>
+            <Button
+              styleName='logout'
+              label='Logout'
+              handleClick={logout}
+            ></Button>
+          </>
+        ) : (
+          <>
+            <Link to='/signup' className='link'>
+              Sign Up
+            </Link>
+            <Link to='/login' className='link'>
+              Login
+            </Link>
+          </>
+        )}
         <Link to='/shop' className='link'>
           Shop
         </Link>
         <Link to='/cart' className='link'>
           Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-        </Link>
-        <Link to='/contact' className='link'>
-          Contact
         </Link>
       </nav>
       <footer className='social-media-links'>

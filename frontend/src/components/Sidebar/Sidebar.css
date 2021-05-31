@@ -1,18 +1,9 @@
-.user-actions {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 100px;
-  padding-bottom: 10px;
-  font-size: 20px;
-  border-bottom: 1px solid black;
-}
-
 .link {
   display: block;
   text-decoration: none;
   text-align: center;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .inline-link {
@@ -22,15 +13,17 @@
 }
 
 .title {
-  margin: 50px 50px;
+  margin: 80px 80px;
   border-radius: 5px;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   padding: 20px 0;
+  border-bottom: 1px solid black;
+  border-radius: 0%;
 }
 
 .navigation {
-  min-height: 400px;
+  min-height: 500px;
   margin: 50px 0;
   padding: 50px 0;
   display: flex;

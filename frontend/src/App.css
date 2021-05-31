@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+button {
+  font-family: 'Rambla', sans-serif;
+}
+
 .sidebar {
   overflow-y: scroll;
   width: 20%;
