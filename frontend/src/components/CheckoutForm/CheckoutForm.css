@@ -73,3 +73,32 @@
   align-items: center;
   font-size: 24px;
 }
+
+@media (max-width: 1800px) {
+  .checkout {
+    width: 45%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .container {
+    align-items: flex-start;
+    margin-top: 40px;
+  }
+
+  .checkout {
+    width: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .checkout {
+    width: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  .checkout {
+    width: 100%;
+  }
+}

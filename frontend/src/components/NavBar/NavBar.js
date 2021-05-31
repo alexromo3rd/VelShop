@@ -32,8 +32,8 @@ const NavBar = ({ user, clearUser, cartItems }) => {
       <ul className='nav-links'>
         <Link to='/'>Home</Link>
         {user.email && <Link to='/'>Profile</Link>}
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/login'>Login</Link>
+        {!user.email && <Link to='/signup'>Sign Up</Link>}
+        {!user.email && <Link to='/login'>Login</Link>}
         <Link to='/shop'>Shop</Link>
         <Link to='/cart'>Cart</Link>
         <Link to='/contact'>Contact</Link>
