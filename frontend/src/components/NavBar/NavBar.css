@@ -7,6 +7,7 @@ nav {
 @media (max-width: 1300px) {
   nav {
     display: block;
+    border-bottom: 1px solid black;
   }
 
   .nav-links {

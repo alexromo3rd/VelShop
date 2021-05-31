@@ -6,9 +6,14 @@
 }
 
 .checkout {
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
+}
+
+.total {
+  font-size: 24px;
+  margin: 15px 0;
 }
 
 .FormGroup {

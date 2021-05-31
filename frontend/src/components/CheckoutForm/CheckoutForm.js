@@ -105,6 +105,9 @@ const CheckoutForm = ({ cartItems, user, clearCart }) => {
           <form className='checkout' onSubmit={handleSubmit}>
             <fieldset className='FormGroup'>
               <div className='FormRow'>
+                <h1 className='total'>Total: ${subTotal}</h1>
+              </div>
+              <div className='FormRow'>
                 <FormInput
                   name='name'
                   label='*Name'

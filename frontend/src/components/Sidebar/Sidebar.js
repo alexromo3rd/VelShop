@@ -65,7 +65,7 @@ const SideBar = ({ user, clearUser, cartItems }) => {
           Cart ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
         </Link>
       </nav>
-      <footer className='social-media-links'>
+      <div className='social-media-links'>
         <a
           href='https://www.instagram.com/vel_nine'
           target='_blank'
@@ -90,7 +90,23 @@ const SideBar = ({ user, clearUser, cartItems }) => {
         >
           <i className='fab fa-twitter-square'></i>
         </a>
-      </footer>
+        <a
+          href='https://www.youtube.com/channel/UCnit1Sd-IUQfRIb_hwYClTA'
+          target='_blank'
+          rel='noreferrer'
+          className='inline-link'
+        >
+          <i className='fab fa-youtube'></i>
+        </a>
+        <a
+          href='https://open.spotify.com/artist/6Dcufc8lKB2eVG5JKnT5fZ?si=apooDyKiSxGuMwKMnLJ18Q&nd=1'
+          target='_blank'
+          rel='noreferrer'
+          className='inline-link'
+        >
+          <i className='fab fa-spotify'></i>
+        </a>
+      </div>
     </>
   );
 };

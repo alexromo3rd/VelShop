@@ -1,0 +1,16 @@
+.footer {
+  display: none;
+}
+
+@media (max-width: 1300px) {
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    font-size: 36px;
+    border: 1px solid black;
+    margin-top: 20px;
+  }
+}
