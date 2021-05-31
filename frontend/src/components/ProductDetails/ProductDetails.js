@@ -18,17 +18,15 @@ const ProductDetails = ({ getProductById, product }) => {
     history.push(`/cart/${productId}?qty=${itemQty}`);
   };
 
-  const { category, price, description, name, count_in_stock, qty } = product;
+  const { category, price, description, name, url, count_in_stock, qty } =
+    product;
 
   return (
     <>
       <section className='product-details'>
         <div className='name-image'>
           <h2>{name}</h2>
-          <img
-            src='https://james-hare.com/images/imagenotfound.jpg'
-            alt='not found'
-          />
+          <img src={url} alt={name} />
           <p>Description: {description}</p>
         </div>
         <div className='details-price'>

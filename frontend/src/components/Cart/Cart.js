@@ -47,42 +47,41 @@ const Cart = ({ addToCart, removeFromCart, cartItems }) => {
         {cartItems.length === 0 ? (
           <h1>Your cart is empty</h1>
         ) : (
-          cartItems.map(({ product_id, name, price, count_in_stock, qty }) => (
-            <div key={product_id} className='cart-item'>
-              <img
-                src='https://james-hare.com/images/imagenotfound.jpg'
-                alt='not found'
-              />
-              <p
-                className='clickable-item-name'
-                onClick={(e) => handleClick(e)}
-              >
-                {name}
-              </p>
-              <p className='price'>${price}</p>
-              <p className='drop-down'>
-                <select
-                  value={qty}
-                  onChange={(e) => {
-                    addToCart(product_id, Number(e.target.value));
-                  }}
-                  name='qty'
-                  id='qty-select'
+          cartItems.map(
+            ({ product_id, name, price, url, count_in_stock, qty }) => (
+              <div key={product_id} className='cart-item'>
+                <img src={url} alt={name} />
+                <p
+                  className='clickable-item-name'
+                  onClick={(e) => handleClick(e)}
                 >
-                  {[...Array(count_in_stock).keys()].map((x) => (
-                    <option key={x + 1} value={x + 1}>
-                      {x + 1}
-                    </option>
-                  ))}
-                </select>
-              </p>
-              <Button
-                styleName='remove'
-                label={<i className='fas fa-trash'></i>}
-                handleClick={() => removeFromCartHandler(product_id)}
-              />
-            </div>
-          ))
+                  {name}
+                </p>
+                <p className='price'>${price}</p>
+                <p className='drop-down'>
+                  <select
+                    value={qty}
+                    onChange={(e) => {
+                      addToCart(product_id, Number(e.target.value));
+                    }}
+                    name='qty'
+                    id='qty-select'
+                  >
+                    {[...Array(count_in_stock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                </p>
+                <Button
+                  styleName='remove'
+                  label={<i className='fas fa-trash'></i>}
+                  handleClick={() => removeFromCartHandler(product_id)}
+                />
+              </div>
+            )
+          )
         )}
       </section>
       <section className='cart-details'>

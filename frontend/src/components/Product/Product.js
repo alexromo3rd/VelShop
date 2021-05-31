@@ -9,13 +9,10 @@ const Product = ({ product }) => {
     history.push(`/products/${product.product_id}`);
   };
 
-  const { name, price } = product;
+  const { name, price, url } = product;
   return (
     <div className='product' onClick={handleClick}>
-      <img
-        src='https://james-hare.com/images/imagenotfound.jpg'
-        alt='not found'
-      />
+      <img src={url} alt={name} />
       <div>
         <p>{name}</p>
         <p>${price}</p>
