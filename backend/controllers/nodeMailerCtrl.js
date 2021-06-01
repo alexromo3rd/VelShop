@@ -16,8 +16,8 @@ module.exports = {
     });
 
     const mailOptions = {
-      from: `${email}`,
-      to: NODEMAILER_USER,
+      from: NODEMAILER_USER,
+      to: `${email}`,
       subject: `${name}`,
       text: `${message}`,
       replyTo: `${email}`,
