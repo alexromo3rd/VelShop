@@ -13,14 +13,19 @@ button {
 }
 
 .sidebar {
-  overflow-y: scroll;
+  overflow: hidden;
   width: 20%;
   border-right: 1px solid black;
 }
 
 .main {
   overflow-y: scroll;
+  overflow-x: hidden;
   width: 80%;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
 }
 
 .form {
