@@ -20,8 +20,7 @@ const {
 const { submitPayment } = require('./controllers/paymentCtrl.js');
 const { sendEmail } = require('./controllers/nodeMailerCtrl');
 
-const PORT = process.env.SERVER_PORT || 5000;
-const { DATABASE_URL, SESSION_SECRET } = process.env;
+const { PORT, DATABASE_URL, SESSION_SECRET } = process.env;
 
 const app = express();
 
@@ -73,6 +72,6 @@ app.get('*', (req, res) =>
   res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
 );
 
-app.listen(PORT, () => {
+app.listen(PORT || 5000, () => {
   console.log(`Listening on port ${PORT}`);
 });
